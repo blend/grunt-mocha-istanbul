@@ -147,7 +147,8 @@ module.exports = function (grunt){
         },
         excludes       : false,
         mochaOptions   : false,
-        istanbulOptions: false
+        istanbulOptions: false,
+        nodeOptions    : false
       }),
       filesDir = grunt.file.isDir(this.filesSrc[0]) ? this.filesSrc[0] : path.dirname(this.filesSrc[0]),
       coverageFolder = path.join(process.cwd(), options.coverageFolder),
@@ -161,6 +162,12 @@ module.exports = function (grunt){
 
     if (options.harmony) {
       args.push('--harmony');
+    }
+
+    if (args.nodeOptions) {
+      args.nodeOptions.forEach(function (opt) {
+        args.push(opt);
+      });
     }
 
     args.push(options.scriptPath);              // ie. node ./node_modules/istanbul/lib/cli.js or another script name
