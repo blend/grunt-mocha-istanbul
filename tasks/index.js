@@ -164,8 +164,8 @@ module.exports = function (grunt){
       args.push('--harmony');
     }
 
-    if (args.nodeOptions) {
-      args.nodeOptions.forEach(function (opt) {
+    if (options.nodeOptions) {
+      options.nodeOptions.forEach(function (opt) {
         args.push(opt);
       });
     }
